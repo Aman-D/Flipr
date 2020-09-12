@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Flex, Text } from "@chakra-ui/core";
+import { Flex, Text, Grid, Box, Link } from "@chakra-ui/core";
+import { NotificationCard } from "./index";
+
 const Notifications = () => {
-  const [notifications, setNotifications] = useState([]);
+  const [links, setLinks] = useState(null);
   /**
    *Fetch the notifications when the components mount
    */
@@ -9,27 +11,42 @@ const Notifications = () => {
     const fetchNotification = async () => {
       await fetch("/api/notifications")
         .then((res) => res.json())
-        .then((notifications) => setNotifications(notifications.notifications));
+        .then((result) => setLinks(result));
     };
     fetchNotification();
   }, []);
-  console.log(notifications);
+
   return (
     <Flex direction="column">
-      <Text>Notifications</Text>
-      <Flex direction="column">
-        {notifications &&
-          notifications.map(({ title, link }, index) => (
-            <Flex key={index}>
-              <Text>Title : {title}</Text>
-              <br />
-              <br />
-              <Text>Link: {link}</Text>
-              <br />
-              <br />
-            </Flex>
-          ))}
-      </Flex>
+      <Grid templateAreas='"n n u " " n n u"'>
+        <Box gridArea="n" mx={8}>
+          <Text fontSize="lg">Notification</Text>
+          <Flex direction="column">
+            {links &&
+              links.notifications.map(({ trimTitle, notDate, link }, index) => (
+                <NotificationCard
+                  title={trimTitle}
+                  date={notDate}
+                  link={link}
+                  key={index}
+                />
+              ))}
+          </Flex>
+        </Box>
+        <Box gridArea="u">
+          <Text fontSize="lg">Useful Link</Text>
+          <Flex direction="column">
+            {links &&
+              links.usefulLinks.map(({ trimTitle, link }, index) => (
+                <Flex direction="column" key={index} textAlign="left">
+                  <Link href={link} target="_blank" m={2}>
+                    {trimTitle}
+                  </Link>
+                </Flex>
+              ))}
+          </Flex>
+        </Box>
+      </Grid>
     </Flex>
   );
 };
