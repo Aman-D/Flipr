@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Flex, Text, Grid, Box, Link } from "@chakra-ui/core";
-import { NotificationCard } from "./index";
+import { NotificationCard, Loading } from "./index";
 
 const Notifications = () => {
   const [links, setLinks] = useState(null);
@@ -22,7 +22,7 @@ const Notifications = () => {
         <Box gridArea="n" mx={8}>
           <Text fontSize="lg">Notification</Text>
           <Flex direction="column">
-            {links &&
+            {links ? (
               links.notifications.map(({ trimTitle, notDate, link }, index) => (
                 <NotificationCard
                   title={trimTitle}
@@ -30,20 +30,26 @@ const Notifications = () => {
                   link={link}
                   key={index}
                 />
-              ))}
+              ))
+            ) : (
+              <Loading />
+            )}
           </Flex>
         </Box>
         <Box gridArea="u">
           <Text fontSize="lg">Useful Link</Text>
           <Flex direction="column">
-            {links &&
+            {links ? (
               links.usefulLinks.map(({ trimTitle, link }, index) => (
                 <Flex direction="column" key={index} textAlign="left">
                   <Link href={link} target="_blank" m={2}>
                     {trimTitle}
                   </Link>
                 </Flex>
-              ))}
+              ))
+            ) : (
+              <Loading />
+            )}
           </Flex>
         </Box>
       </Grid>
