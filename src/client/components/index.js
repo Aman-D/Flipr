@@ -5,3 +5,5 @@ export { default as Notifications } from "./Notifications";
 export { default as Hospitals } from "./Hospitals";
 export { default as NotificationCard } from "./NotificationCard";
 export { default as Loading } from "./Loading";
+export { default as HospitalBeds } from "./HospitalBeds";
+export { default as HospitalBedCard } from "./HospitalBedCard";

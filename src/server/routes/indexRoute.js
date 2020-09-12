@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const axios = require("axios").default;
 const date = require("../helper/date");
+
 /**
  * @description Fetch notifications
  * @route GET https://api.rootnet.in/covid19-in/notifications
@@ -46,8 +47,30 @@ router.get("/notifications", async (req, res) => {
   });
 });
 
-router.get("/", (req, res) => {
-  res.send("hello");
+/**
+ * @description Fetch hospitals
+ * @route GET https://api.rootnet.in/covid19-in/hospitals/beds
+ */
+router.get("/hospitals", async (req, res) => {
+  let fetchedData;
+  await axios
+    .get("https://api.rootnet.in/covid19-in/hospitals/beds")
+    .then(function (response) {
+      // handle success
+      fetchedData = response.data;
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+      res.status(500).send("Internal Server Error");
+    });
+
+  res
+    .status(200)
+    .json({
+      summary: fetchedData.data.summary,
+      regional: fetchedData.data.regional,
+    });
 });
 
 module.exports = router;

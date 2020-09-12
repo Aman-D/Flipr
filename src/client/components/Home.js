@@ -1,28 +1,15 @@
 import React, { useContext } from "react";
 import { Text, Flex, Select, Button } from "@chakra-ui/core";
-import stateList from "../statelist.json";
-import { UserContext } from "../provider/UserProvider";
+
 import { Link } from "react-router-dom";
+import useStateHook from "../hooks/useStateHook";
 
 const Home = () => {
-  const { setUserState, UserState } = useContext(UserContext);
-
+  const [DropDown, UserState] = useStateHook();
   return (
     <Flex direction="column">
       <Text>Please slect your state for quick results</Text>
-      <Select>
-        {Object.keys(stateList).map((value, index) => {
-          const state = stateList[value]
-            .split(" ")
-            .join("")
-            .toLocaleLowerCase();
-          return (
-            <option value={state} key={index}>
-              {stateList[value]}
-            </option>
-          );
-        })}
-      </Select>
+      {DropDown}
       <Button variant="solid" w="fit-content">
         <Link to="/daily-cases">Proceed</Link>
       </Button>
