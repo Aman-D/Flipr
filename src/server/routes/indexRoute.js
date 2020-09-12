@@ -24,4 +24,8 @@ router.get("/notifications", async (req, res) => {
   res.status(200).json(fetchedData.data);
 });
 
+router.get("/", (req, res) => {
+  res.send("hello");
+});
+
 module.exports = router;

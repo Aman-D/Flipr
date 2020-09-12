@@ -1,10 +1,8 @@
 const express = require("express");
 const app = express();
-const dotenv = require("dotenv");
-const cors = require("cors");
 
-//Config file
-dotenv.config({ path: "./config/config.env" });
+const cors = require("cors");
+const indexRoute = require("./routes/indexRoute");
 
 // Body Parser
 app.use(express.urlencoded({ limit: "50mb", extended: false }));
@@ -21,7 +19,7 @@ if (process.env.NODE_ENV == "development") {
 app.use(express.static("dist"));
 
 // Routes
-app.use("/api", require("./routes/index.js"));
+app.use("/api", indexRoute);
 
 app.listen(process.env.PORT || 8080, () =>
   console.log(`Listening on port ${process.env.PORT || 8080}!`)

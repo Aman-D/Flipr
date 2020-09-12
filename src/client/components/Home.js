@@ -10,7 +10,7 @@ const Home = () => {
   return (
     <Flex direction="column">
       <Text>Please slect your state for quick results</Text>
-      <Select onChange={(e) => setUserState(e.target.value)} value={UserState}>
+      <Select>
         {Object.keys(stateList).map((value, index) => {
           const state = stateList[value]
             .split(" ")
