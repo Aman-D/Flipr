@@ -3,6 +3,7 @@ const router = express.Router();
 const axios = require("axios").default;
 const date = require("../helper/date");
 const medicalColleges = require("../helper/groupColleges");
+const db = require("../db/db");
 /**
  * @description Fetch notifications
  * @route GET https://api.rootnet.in/covid19-in/notifications
@@ -113,9 +114,20 @@ router.get("/contacts", async (req, res) => {
       console.log(error);
       res.status(500).send("Internal Server Error");
     });
-  console.log(fetchedData);
+
   res.status(200).json({
     data: fetchedData.data.contacts,
+  });
+});
+
+/**
+ * @description Fetch Desceased people
+ */
+router.get("/desceased", async (req, res) => {
+  let sql = "SELECT * from covid19india";
+  db.query(sql, (err, result) => {
+    if (err) throw err;
+    res.send(result);
   });
 });
 

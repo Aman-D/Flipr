@@ -3,7 +3,14 @@ import { Flex, Text, Grid } from "@chakra-ui/core";
 
 const MedicalCollegesCard = ({ array }) => {
   return array && array.length > 0 ? (
-    <Flex direction="column" boxShadow="sm" p={4} m={4}>
+    <Flex
+      direction="column"
+      boxShadow="md"
+      borderRadius="md"
+      p={4}
+      m={4}
+      backgroundColor="custom.lightBlue"
+    >
       <Text fontSize="xl" fontWeight="bolder" textAlign="center" p={2}>
         {array[0].state}
       </Text>
@@ -26,7 +33,9 @@ const MedicalCollegesCard = ({ array }) => {
             key={index}
             my={2}
             textAlign="left"
-            backgroundColor={index % 2 === 0 ? "blue.100" : "pink.100"}
+            backgroundColor={index % 2 === 0 ? "custom.blue1" : "custom.red"}
+            p={1}
+            color="white"
           >
             <Text>{city}</Text>
             <Text>{name}</Text>

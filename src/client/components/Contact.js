@@ -33,10 +33,14 @@ const Contact = () => {
           direction="column"
           key={index}
           m={4}
-          boxShadow="sm"
+          boxShadow="md"
+          borderRadius="md"
           minW="180px"
           flexGrow="1"
           p={4}
+          backgroundColor="custom.lightBlue"
+          borderColor="custom.red"
+          borderWidth="2px"
         >
           <Text>{loc}</Text>
           <Text>{number}</Text>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Flex, Text, Grid, Box, Link } from "@chakra-ui/core";
+import { Flex, Text, Grid, Box, Link, Icon } from "@chakra-ui/core";
 import { NotificationCard, Loading } from "./index";
 
 const Notifications = () => {
@@ -20,7 +20,9 @@ const Notifications = () => {
     <Flex direction="column">
       <Grid templateAreas='"n n u " " n n u"'>
         <Box gridArea="n" mx={8}>
-          <Text fontSize="lg">Notification</Text>
+          <Text fontSize="xl" textAlign="left">
+            Notification
+          </Text>
           <Flex direction="column">
             {links ? (
               links.notifications.map(({ trimTitle, notDate, link }, index) => (
@@ -37,16 +39,29 @@ const Notifications = () => {
           </Flex>
         </Box>
         <Box gridArea="u">
-          <Text fontSize="lg">Useful Link</Text>
+          <Text fontSize="xl" textAlign="left">
+            Useful Link
+          </Text>
           <Flex direction="column">
             {links ? (
-              links.usefulLinks.map(({ trimTitle, link }, index) => (
-                <Flex direction="column" key={index} textAlign="left">
-                  <Link href={link} target="_blank" m={2}>
-                    {trimTitle}
-                  </Link>
-                </Flex>
-              ))
+              links.usefulLinks.map(({ trimTitle, link }, index) => {
+                if (trimTitle.length > 0) {
+                  return (
+                    <Link
+                      href={link}
+                      target="_blank"
+                      m={2}
+                      backgroundColor="custom.lightBlue"
+                      p={2}
+                      key={index}
+                      textAlign="left"
+                    >
+                      {trimTitle}
+                      <Icon name="external-link" mx="2px" />
+                    </Link>
+                  );
+                }
+              })
             ) : (
               <Loading />
             )}

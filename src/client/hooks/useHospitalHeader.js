@@ -41,13 +41,20 @@ const useHospitalHeader = () => {
   }, [DUserState]);
 
   const Header = (
-    <Flex justifyContent="space-between" p={4} backgroundColor="orange.100">
+    <Flex
+      justifyContent="space-between"
+      p={4}
+      backgroundColor="custom.blue2"
+      color="white"
+      borderRadius="md"
+    >
       <Flex>
         <Text
           p={2}
           cursor="pointer"
           onClick={() => setState(0)}
-          backgroundColor={state === 0 ? "teal.500" : ""}
+          backgroundColor={state === 0 ? "custom.blue1" : ""}
+          borderRadius="md"
         >
           Hospital Beds
         </Text>
@@ -55,7 +62,8 @@ const useHospitalHeader = () => {
           p={2}
           cursor="pointer"
           onClick={() => setState(1)}
-          backgroundColor={state === 1 ? "teal.500" : ""}
+          backgroundColor={state === 1 ? "custom.blue1" : ""}
+          borderRadius="md"
         >
           Medical Colleges
         </Text>

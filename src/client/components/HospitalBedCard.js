@@ -10,7 +10,15 @@ const HospitalBedCard = ({
   totalHospitals,
 }) => {
   return (
-    <Flex direction="column" boxShadow="sm" p={8} minW="380px" m={4}>
+    <Flex
+      direction="column"
+      boxShadow="md"
+      borderRadius="md"
+      p={8}
+      minW="380px"
+      m={4}
+      backgroundColor="custom.lightBlue"
+    >
       <Text fontSize="xl" fontWeight="bolder" textAlign="center" p={2}>
         {state.toUpperCase()}
       </Text>

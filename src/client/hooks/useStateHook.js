@@ -5,7 +5,11 @@ const useStateHook = (list, UserState) => {
   const [state, setState] = useState(UserState);
   const DropDown =
     Object.keys(list).length > 0 ? (
-      <Select value={state} onChange={(e) => setState(e.target.value)}>
+      <Select
+        value={state}
+        onChange={(e) => setState(e.target.value)}
+        color="black"
+      >
         {Object.keys(list).map((value, index) => {
           return (
             <option value={value} key={index}>

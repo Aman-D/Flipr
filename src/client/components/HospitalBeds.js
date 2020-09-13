@@ -43,11 +43,12 @@ const HospitalBeds = ({ state }) => {
         {Object.keys(hospitalBeds.summary).map((value, index) => (
           <Box
             key={index}
-            backgroundColor="pink.300"
+            backgroundColor="custom.red"
+            color="white"
             m={4}
             boxShadow="md"
             p={4}
-            borderRadius="sm"
+            borderRadius="md"
           >
             <Text>{value}</Text>
             <Text>{hospitalBeds.summary[value]}</Text>

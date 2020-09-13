@@ -1,8 +1,9 @@
 const express = require("express");
 const app = express();
-
 const cors = require("cors");
 const indexRoute = require("./routes/indexRoute");
+// database
+const db = require("./db/db");
 
 // Body Parser
 app.use(express.urlencoded({ limit: "50mb", extended: false }));
@@ -24,3 +25,5 @@ app.use("/api", indexRoute);
 app.listen(process.env.PORT || 8080, () =>
   console.log(`Listening on port ${process.env.PORT || 8080}!`)
 );
+
+module.exports = { database: db };

@@ -8,10 +8,10 @@ import {
   Home,
 } from "./components/index";
 import { Switch, Route } from "react-router";
-
+import { Box } from "@chakra-ui/core";
 const App = () => {
   return (
-    <>
+    <Box backgroundColor="custom.white" minH="100vh">
       <TopBar />
       <Switch>
         <Route exact path="/" component={Home} />
@@ -19,7 +19,7 @@ const App = () => {
         <Route exact path="/hospitals" component={Hospitals} />
         <Route exact path="/notifications" component={Notifications} />
       </Switch>
-    </>
+    </Box>
   );
 };
 

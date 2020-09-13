@@ -6,40 +6,54 @@ const TopBar = () => {
   const { pathname } = useLocation();
 
   return (
-    <Flex justifyContent="space-between" mx={32} mt={18} mb={24}>
+    <Flex
+      justifyContent="space-between"
+      mx={32}
+      p={18}
+      mb={24}
+      color="white"
+      backgroundColor="custom.lightBlue"
+      borderRadius="lg"
+    >
       {pathname !== "/" ? (
         <>
           <Text
             as={Link}
             to="/daily-cases"
-            backgroundColor={pathname === "/daily-cases" ? "teal.500" : ""}
+            backgroundColor={pathname === "/daily-cases" ? "custom.blue1" : ""}
             p={2}
+            borderRadius="lg"
           >
             Daily Cases
           </Text>
           <Text
             as={Link}
             to="/notifications"
-            backgroundColor={pathname === "/notifications" ? "teal.500" : ""}
+            backgroundColor={
+              pathname === "/notifications" ? "custom.blue1" : ""
+            }
             p={2}
+            borderRadius="lg"
           >
             Notifications
           </Text>
           <Text
             as={Link}
             to="/hospitals"
-            backgroundColor={pathname === "/hospitals" ? "teal.500" : ""}
+            backgroundColor={pathname === "/hospitals" ? "custom.blue1" : ""}
             p={2}
+            borderRadius="lg"
           >
             Hospital
           </Text>
           <Text
             as={Link}
             to="/helpline"
-            backgroundColor={pathname === "/helpline" ? "teal.500" : ""}
+            backgroundColor={pathname === "/helpline" ? "custom.blue1" : ""}
             p={2}
+            borderRadius="lg"
           >
-            Contect & Helpline
+            Contact & Helpline
           </Text>
         </>
       ) : (
