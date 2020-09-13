@@ -7,9 +7,10 @@ import useStateHook from "../hooks/useStateHook";
 
 const HospitalBeds = ({ state }) => {
   const [beds, setBeds] = useState([]);
-  const { hospitalBeds, updateHospitalBeds } = useContext(UserContext);
-  const [DropDown, UserState] = useStateHook();
-  console.log(UserState);
+  const { hospitalBeds, updateHospitalBeds, UserState } = useContext(
+    UserContext
+  );
+
   /**
    *Fetch the Hospital beds and store it in user context
    */

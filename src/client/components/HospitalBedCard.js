@@ -11,7 +11,7 @@ const HospitalBedCard = ({
 }) => {
   return (
     <Flex direction="column" boxShadow="sm" p={8} minW="380px" m={4}>
-      <Text textAlign="center" fontSize="xl">
+      <Text fontSize="xl" fontWeight="bolder" textAlign="center" p={2}>
         {state.toUpperCase()}
       </Text>
       <Grid templateColumns="1fr 1fr">

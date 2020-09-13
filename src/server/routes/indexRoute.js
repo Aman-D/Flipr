@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const axios = require("axios").default;
 const date = require("../helper/date");
-
+const medicalColleges = require("../helper/groupColleges");
 /**
  * @description Fetch notifications
  * @route GET https://api.rootnet.in/covid19-in/notifications
@@ -65,12 +65,35 @@ router.get("/hospitals", async (req, res) => {
       res.status(500).send("Internal Server Error");
     });
 
-  res
-    .status(200)
-    .json({
-      summary: fetchedData.data.summary,
-      regional: fetchedData.data.regional,
+  res.status(200).json({
+    summary: fetchedData.data.summary,
+    regional: fetchedData.data.regional,
+  });
+});
+
+/**
+ * @description Fetch Medical colleges
+ * @route GET https://api.rootnet.in/covid19-in/hospitals/medical-colleges
+ */
+router.get("/medical-colleges", async (req, res) => {
+  let fetchedData;
+  await axios
+    .get("https://api.rootnet.in/covid19-in/hospitals/medical-colleges")
+    .then(function (response) {
+      // handle success
+      fetchedData = response.data;
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+      res.status(500).send("Internal Server Error");
     });
+  const modifiedResult = await medicalColleges(
+    fetchedData.data.medicalColleges
+  );
+  res.status(200).json({
+    medicalColleges: modifiedResult,
+  });
 });
 
 module.exports = router;

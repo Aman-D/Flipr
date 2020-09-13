@@ -1,23 +1,22 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Text, Flex, Select, Button } from "@chakra-ui/core";
-import stateList from "../statelist.json";
-import { UserContext } from "../provider/UserProvider";
 
-const useStateHook = (state) => {
-  const { setUserState, UserState } = useContext(state ? state : UserContext);
-  const DropDown = (
-    <Select value={UserState} onChange={(e) => setUserState(e.target.value)}>
-      {Object.keys(stateList).map((value, index) => {
-        const state = stateList[value].split(" ").join("").toLocaleLowerCase();
-        return (
-          <option value={state} key={index}>
-            {stateList[value]}
-          </option>
-        );
-      })}
-    </Select>
-  );
-  return [DropDown, UserState];
+const useStateHook = (list, UserState) => {
+  const [state, setState] = useState(UserState);
+  const DropDown =
+    Object.keys(list).length > 0 ? (
+      <Select value={state} onChange={(e) => setState(e.target.value)}>
+        {Object.keys(list).map((value, index) => {
+          return (
+            <option value={value} key={index}>
+              {list[value]}
+            </option>
+          );
+        })}
+      </Select>
+    ) : null;
+
+  return [DropDown, state];
 };
 
 export default useStateHook;

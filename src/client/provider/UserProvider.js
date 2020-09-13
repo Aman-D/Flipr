@@ -8,9 +8,17 @@ const UserProvider = ({ children }) => {
     regional: [],
     summary: {},
   });
+  const [medicalColleges, updateMedicalColleges] = useState([]);
   return (
     <UserContext.Provider
-      value={{ setUserState, UserState, hospitalBeds, updateHospitalBeds }}
+      value={{
+        setUserState,
+        UserState,
+        hospitalBeds,
+        updateHospitalBeds,
+        medicalColleges,
+        updateMedicalColleges,
+      }}
     >
       {children}
     </UserContext.Provider>
