@@ -2,7 +2,7 @@ import React from "react";
 import { Flex, Text, Grid } from "@chakra-ui/core";
 
 const MedicalCollegesCard = ({ array }) => {
-  return array ? (
+  return array && array.length > 0 ? (
     <Flex direction="column" boxShadow="sm" p={4} m={4}>
       <Text fontSize="xl" fontWeight="bolder" textAlign="center" p={2}>
         {array[0].state}

@@ -46,9 +46,13 @@ const MedicalColleges = (props) => {
       } else if (UserState !== "all" && type === "all") {
         updateFilteredColleges({ state: medicalColleges[UserState] });
       } else {
-        filteredList = medicalColleges[UserState].filter(
-          ({ ownership }) => ownership.toLowerCase() === type
-        );
+        if (medicalColleges[UserState]) {
+          filteredList = medicalColleges[UserState].filter(
+            ({ ownership }) => ownership.toLowerCase() === type
+          );
+        } else {
+          updateFilteredColleges({});
+        }
 
         updateFilteredColleges({ state: filteredList });
       }

@@ -9,6 +9,8 @@ const UserProvider = ({ children }) => {
     summary: {},
   });
   const [medicalColleges, updateMedicalColleges] = useState([]);
+  const [contacts, updateContacts] = useState([]);
+  const [primaryContact, updatePrimaryContact] = useState({});
   return (
     <UserContext.Provider
       value={{
@@ -18,6 +20,10 @@ const UserProvider = ({ children }) => {
         updateHospitalBeds,
         medicalColleges,
         updateMedicalColleges,
+        contacts,
+        updateContacts,
+        primaryContact,
+        updatePrimaryContact,
       }}
     >
       {children}

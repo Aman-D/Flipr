@@ -96,4 +96,27 @@ router.get("/medical-colleges", async (req, res) => {
   });
 });
 
+/**
+ * @description Fetch Contact details
+ * @route GET https://api.rootnet.in/covid19-in/contacts
+ */
+router.get("/contacts", async (req, res) => {
+  let fetchedData;
+  await axios
+    .get("https://api.rootnet.in/covid19-in/contacts")
+    .then(function (response) {
+      // handle success
+      fetchedData = response.data;
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+      res.status(500).send("Internal Server Error");
+    });
+  console.log(fetchedData);
+  res.status(200).json({
+    data: fetchedData.data.contacts,
+  });
+});
+
 module.exports = router;
