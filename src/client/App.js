@@ -6,6 +6,7 @@ import {
   Notifications,
   Contact,
   Home,
+  Cases,
 } from "./components/index";
 import { Switch, Route } from "react-router";
 import { Box } from "@chakra-ui/core";
@@ -18,6 +19,7 @@ const App = () => {
         <Route exact path="/helpline" component={Contact} />
         <Route exact path="/hospitals" component={Hospitals} />
         <Route exact path="/notifications" component={Notifications} />
+        <Route exact path="/daily-cases" component={Cases} />
       </Switch>
     </Box>
   );

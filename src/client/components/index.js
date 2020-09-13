@@ -9,3 +9,5 @@ export { default as HospitalBeds } from "./HospitalBeds";
 export { default as HospitalBedCard } from "./HospitalBedCard";
 export { default as MedicalColleges } from "./MedicalColleges";
 export { default as MedicalCollegesCard } from "./MedicalCollegesCard";
+export { default as Cases } from "./Cases";
+export { default as Graph } from "./Graph";
