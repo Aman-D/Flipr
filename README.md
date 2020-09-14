@@ -82,3 +82,11 @@ update flipr.covid19india
 set gender = "male"
 where gender is null;
 ```
+
+## Some screen Shots of the website
+
+![Home](/md/home.jpg)
+![Cases](/md/daily.jpg)
+![Notification](/md/notification.jpg)
+![Hospitals](/md/hospitals.jpg)
+![Colleges](/md/medical.jpg)
