@@ -4,6 +4,7 @@ const axios = require("axios").default;
 const date = require("../helper/date");
 const medicalColleges = require("../helper/groupColleges");
 const db = require("../db/db");
+
 /**
  * @description Fetch notifications
  * @route GET https://api.rootnet.in/covid19-in/notifications

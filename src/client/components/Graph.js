@@ -101,7 +101,6 @@ const Graph = ({ array, status }) => {
         >
           Print
         </Button>
-        <Mail />
       </Flex>
     </Flex>
   );

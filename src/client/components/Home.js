@@ -4,6 +4,7 @@ import stateList from "../statelist.json";
 import { Link } from "react-router-dom";
 import useStateHook from "../hooks/useStateHook";
 import { UserContext } from "../provider/UserProvider";
+
 const Home = () => {
   const { UserState, setUserState } = useContext(UserContext);
   const [list, setList] = useState({});
@@ -28,11 +29,18 @@ const Home = () => {
   useEffect(() => {
     setUserState(DUserState);
   }, [DUserState]);
+
   return (
-    <Flex direction="column">
+    <Flex
+      direction="column"
+      justifyContent="center"
+      alignItems="center"
+      w="320px"
+      m="0 auto"
+    >
       <Text>Please slect your state for quick results</Text>
       {DropDown}
-      <Button variant="solid" w="fit-content">
+      <Button variant="solid" w="fit-content" m={4}>
         <Link to="/daily-cases">Proceed</Link>
       </Button>
     </Flex>

@@ -1,6 +1,6 @@
 import React from "react";
 import emailjs from "emailjs-com";
-import { Flex, Input } from "@chakra-ui/core";
+import { Flex, Input, Button } from "@chakra-ui/core";
 const Mail = () => {
   function sendEmail(e) {
     e.preventDefault();
@@ -34,8 +34,9 @@ const Mail = () => {
       >
         <label>Email</label>
         <Input color="black" type="email" name="user_email" m={2} />
-        <Input type="file" name="my_file" />
-        <Input color="black" type="submit" value="Send" m={2} />
+        <Button color="black" type="submit" value="Send" m={2}>
+          Send
+        </Button>
       </Flex>
     </form>
   );
