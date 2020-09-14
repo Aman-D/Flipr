@@ -20,6 +20,10 @@ if (process.env.NODE_ENV == "development") {
 
 app.use(express.static("dist"));
 
+app.get("/", function (req, res) {
+  res.sendFile("index.html");
+});
+
 // Routes
 app.use("/api", indexRoute);
 
