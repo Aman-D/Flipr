@@ -91,13 +91,9 @@ const Cases = () => {
     setUserState(DUserState);
   }, [DUserState]);
 
-  /*
-  FIlter the record
-  */
-  console.log(filteredPerson);
   return (
     <Grid templateColumns="3fr 1fr">
-      <Flex>{<Graph array={filteredPerson} status={Status} />}</Flex>
+      <Graph array={filteredPerson} status={Status} />
       <Flex
         direction="column"
         backgroundColor="custom.blue2"

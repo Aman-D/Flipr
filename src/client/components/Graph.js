@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Flex } from "@chakra-ui/core";
+import { Button, Flex } from "@chakra-ui/core";
 import { Line } from "react-chartjs-2";
-
+import { jsPDF } from "jspdf";
+import { Mail } from "../components/index";
 const Graph = ({ array, status }) => {
   const [data, setData] = useState({});
   const [state, setState] = useState({});
@@ -39,14 +40,37 @@ const Graph = ({ array, status }) => {
     setState(dic);
   }, [data]);
 
+  /*
+  For printing the cahrt
+  */
+  const print = () => {
+    let canvas = document.getElementsByClassName("chartjs-render-monitor")[0];
+    const pdf = new jsPDF({ orientation: "l" });
+    pdf.addImage(canvas.toDataURL(), "JPEG", 15, 40, 250, 100);
+    pdf.save("download.pdf");
+  };
+
   return (
-    <Flex p={8} objectFit="cover" backgroundColor="white">
+    <Flex
+      p={8}
+      objectFit="cover"
+      direction="column"
+      justifyContent="center"
+      alignItems="center"
+    >
       <Line
         data={state}
         width={1000}
         height={400}
+        id="chart"
         options={{ maintainAspectRatio: false }}
         options={{
+          elements: {
+            point: {
+              radius: 5,
+              hoverBorderWidth: 3,
+            },
+          },
           title: {
             display: true,
             text: ` Number of people ${status}`,
@@ -56,8 +80,29 @@ const Graph = ({ array, status }) => {
             display: true,
             position: "right",
           },
+          tooltips: {
+            mode: "point",
+          },
         }}
       />
+      <Flex
+        backgroundColor="custom.blue2"
+        alignItems="center"
+        p={4}
+        borderRadius="md"
+      >
+        <Button
+          onClick={() => {
+            print();
+          }}
+          backgroundColor="custom.white"
+          color="black"
+          mx={2}
+        >
+          Print
+        </Button>
+        <Mail />
+      </Flex>
     </Flex>
   );
 };
