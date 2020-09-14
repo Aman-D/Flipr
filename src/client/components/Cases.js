@@ -58,22 +58,28 @@ const Cases = () => {
           let date = reportedOn.split("/");
           date = `${date[2]}-${date[1]}-${date[0]}`;
           let Age = age.split("-");
+
           if (
             Gender === gender &&
-            (UserState !== "all"
-              ? state.split(" ").join("").toLowerCase() === UserState
-              : true) &&
             status.toLowerCase() === Status &&
             parseInt(ageEstimate) >= parseInt(Age[0]) &&
             parseInt(ageEstimate) <= parseInt(Age[1]) &&
             new Date(date) >= new Date(fromDate) &&
             new Date(date) <= new Date(toDate)
-          )
-            return true;
-          else return false;
+          ) {
+            if (UserState === "all") {
+              return true;
+            } else if (state.split(" ").join("").toLowerCase() === UserState) {
+              return true;
+            } else {
+              return false;
+            }
+          } else {
+            return false;
+          }
         }
       );
-      console.log(filter);
+
       updateFilteredPerson(filter);
     }
   }, [UserState, fromDate, toDate, age, Gender, Status, people]);
@@ -88,10 +94,10 @@ const Cases = () => {
   /*
   FIlter the record
   */
-
+  console.log(filteredPerson);
   return (
     <Grid templateColumns="3fr 1fr">
-      <Flex>{<Graph />}</Flex>
+      <Flex>{<Graph array={filteredPerson} status={Status} />}</Flex>
       <Flex
         direction="column"
         backgroundColor="custom.blue2"
